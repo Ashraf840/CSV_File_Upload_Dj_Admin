@@ -1,0 +1,34 @@
+
+
+Refs:
+# https://docs.djangoproject.com/en/3.2/ref/templates/language/
+
+
+
+Agenda
+------
+1. From a specific django admin panel's table there will be a button that redirects the admin to a custom admin-page which will 
+    allow the user to populate the data inside that specific table from a csv file.
+
+2. Basically, create a new custom admin page for that particular model, which will allow the admin to upload a CSV file from that custom admin page.
+    [NB]: Build custom admin page for each django-model where it's necessary to add a feature of populating data from a CSV file from the admin-panel.
+
+
+
+[Note]:  To override any admin-model's HTML, we need to create an HTML file called "change_list.html" inside a strategic subdirectory structure of the 'templates' folder, 
+    which will be similar to URL after the admin access inside a class-model through the django-admin-panel.
+
+[ IMPORTANT ]:  To customize any default admin-model-template, just note down the URL of that admin-model-page, and create subdirectories in the same tree structure, lastly add a file called 'change_list.html', where it'll be extending the default html-file for providing admin-model-page.
+    Example: If a certain model called 'Customer' is accessed from the django-admin-panel and the URL is like "http://127.0.0.1:8080/admin/customer/customer/".
+            Then inside the 'templates' directory, the "change_list.html" file will be created under the following subdirectory structure:
+                "upload_csv_proj\templates\admin\customer\customer\change_list.html"
+            [NB]: Though the "upload_csv_proj\templates" directories will be ignored.
+
+
+3. To create a link to redierct the admin to the CSV file upload page, we need to make modifications insdie the 'admin.pt' file of the 'Customer' app of the proj.
+    Ref:  https://docs.djangoproject.com/en/3.2/ref/contrib/admin/
+    From this page, get the knowledge of the function 'get_urls(self)' used inside the class extending the 'admin.ModelAdmin'.
+    This logic inside that func grabs all the URLS which is existing inside the project.
+
+
+4. Create a django form which will allow the admin to upload a CSV file using a form.

@@ -1,0 +1,17 @@
+{% extends 'admin/base.html' %}
+
+
+
+{% block content %}
+
+    <h1>CSV File Upload into a DB Template</h1>
+
+    <div>
+        <form action="." method="POST", enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload File</button>
+        </form>
+    </div>
+
+{% endblock %}
